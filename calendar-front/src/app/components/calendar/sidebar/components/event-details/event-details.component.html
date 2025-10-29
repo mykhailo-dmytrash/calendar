@@ -1,0 +1,45 @@
+@if (event) {
+  <div class="event-details">
+    <button class="back-button" (click)="onBack()">
+      ← Back
+    </button>
+
+    <div class="details-content">
+      <h2>{{ event.title }}</h2>
+      
+      <div class="detail-row">
+        <span class="label">Date:</span>
+        <span class="value">{{ dateUtils.getLocalDateString(event.start) }}</span>
+      </div>
+
+      <div class="detail-row">
+        <span class="label">Time:</span>
+        <span class="value">{{ dateUtils.getTimeRange(event.start, event.end) }}</span>
+      </div>
+
+      @if (event.description) {
+        <div class="detail-row">
+          <span class="label">Description:</span>
+          <span class="value">{{ event.description }}</span>
+        </div>
+      }
+
+      @if (event.location) {
+        <div class="detail-row">
+          <span class="label">Location:</span>
+          <span class="value">📍 {{ event.location }}</span>
+        </div>
+      }
+
+      <div class="action-buttons">
+        <button class="btn-update" (click)="onUpdate()">
+          ✏️ Update Event
+        </button>
+        <button class="btn-delete" (click)="onDelete()">
+          🗑️ Delete Event
+        </button>
+      </div>
+    </div>
+  </div>
+}
+

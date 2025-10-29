@@ -1,0 +1,44 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <button
+      class="nav-button"
+      (click)="previousMonth()">
+      ←
+    </button>
+
+    <div class="month-year-container">
+      <h2 class="month-year">{{ getMonthYear() }}</h2>
+
+      @if(isCurrentMonth()) {
+        <span class="current-badge">Current</span>
+      } @else {
+        <button class="current-button" (click)="goToCurrentMonth()">
+          Go to Current Month
+        </button>
+      }
+    </div>
+
+    <button
+      class="nav-button"
+      (click)="nextMonth()">
+      →
+    </button>
+  </div>
+
+  <mwl-calendar-month-view
+    [viewDate]="viewDate()"
+    [events]="events()"
+    (dayClicked)="onDayClicked($event.day.date)">
+  </mwl-calendar-month-view>
+
+  <app-calendar-sidebar
+    [isOpen]="isSidebarOpen()"
+    [selectedDate]="selectedDate()"
+    [events]="selectedDateEvents()"
+    (close)="onSidebarClose()"
+    (addEvent)="onAddEvent($event)"
+    (refreshEvents)="onRefreshEvents()"
+    (deleteEvent)="onDeleteEvent($event)"
+    (updateEvent)="onUpdateEvent($event)">
+  </app-calendar-sidebar>
+</div>

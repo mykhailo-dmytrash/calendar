@@ -1,0 +1,67 @@
+.add-event-button {
+  width: 100%;
+  background: #007bff;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: #0056b3;
+  }
+
+  &:active {
+    background: #004085;
+  }
+}
+
+.no-events {
+  text-align: center;
+  color: #999;
+  padding: 40px 0;
+}
+
+.event-item {
+  padding: 15px;
+  margin-bottom: 12px;
+  background: #f8f9fa;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #e9ecef;
+    transform: translateX(4px);
+  }
+
+  h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: #333;
+  }
+}
+
+.event-time {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.event-description {
+  margin: 8px 0 4px 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.event-location {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #666;
+}

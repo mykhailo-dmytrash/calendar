@@ -1,0 +1,20 @@
+<button class="add-event-button" (click)="onAddEventClick()">
+  + Add Event
+</button>
+
+@if (events.length === 0) {
+  <p class="no-events">No events for this day</p>
+} @else {
+  @for (event of events; track event.id) {
+    <div class="event-item" [style.border-left-color]="event.color?.primary" (click)="onEventClick(event)">
+      <h4>{{ event.title }}</h4>
+      <p class="event-time">{{ dateUtils.getTimeRange(event.start, event.end) }}</p>
+      @if (event.description) {
+        <p class="event-description">{{ event.description }}</p>
+      }
+      @if (event.location) {
+        <p class="event-location">📍 {{ event.location }}</p>
+      }
+    </div>
+  }
+}

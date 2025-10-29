@@ -1,0 +1,78 @@
+<button class="back-button" (click)="onCancel()">
+  ← Back
+</button>
+
+<form [formGroup]="eventForm" class="add-event-form" (ngSubmit)="onSave()">
+  <div class="form-group">
+    <label for="title">Title *</label>
+    <input
+      id="title"
+      type="text"
+      formControlName="title"
+      placeholder="Enter event title"
+      class="form-input"
+      [class.error]="isFieldInvalid('title')">
+    @if (isFieldInvalid('title')) {
+      <span class="error-message">{{ getFieldError('title') }}</span>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description *</label>
+    <textarea
+      id="description"
+      formControlName="description"
+      placeholder="Enter event description"
+      class="form-textarea"
+      rows="3"
+      [class.error]="isFieldInvalid('description')">
+    </textarea>
+    @if (isFieldInvalid('description')) {
+      <span class="error-message">{{ getFieldError('description') }}</span>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="startTime">Start Time *</label>
+    <input
+      id="startTime"
+      type="time"
+      formControlName="startTime"
+      class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="endTime">End Time *</label>
+    <input
+      id="endTime"
+      type="time"
+      formControlName="endTime"
+      class="form-input"
+      [class.error]="hasTimeRangeError()">
+    @if (hasTimeRangeError()) {
+      <span class="error-message">{{ getTimeRangeError() }}</span>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input
+      id="location"
+      type="text"
+      formControlName="location"
+      placeholder="Enter location (optional)"
+      class="form-input"
+      [class.error]="isFieldInvalid('location')">
+    @if (isFieldInvalid('location')) {
+      <span class="error-message">{{ getFieldError('location') }}</span>
+    }
+  </div>
+
+  <button type="submit" class="save-button" [disabled]="eventForm.invalid">
+    @if (isEditMode) {
+      Update Event
+    } @else {
+      Save Event
+    }
+  </button>
+</form>

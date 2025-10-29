@@ -1,0 +1,93 @@
+.back-button {
+  background: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+}
+
+.add-event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+.form-input,
+.form-textarea {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.save-button {
+  background: #28a745;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover:not(:disabled) {
+    background: #218838;
+  }
+
+  &:active:not(:disabled) {
+    background: #1e7e34;
+  }
+
+  &:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.form-input.error,
+.form-textarea.error {
+  border-color: #dc3545;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}

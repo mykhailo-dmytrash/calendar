@@ -1,0 +1,40 @@
+@if (isOpen) {
+  <div class="sidebar-overlay" (click)="closeSidebar()"></div>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h3>{{ getSelectedDateString() }}</h3>
+      <button class="close-button" (click)="closeSidebar()">×</button>
+    </div>
+    <div class="sidebar-content">
+      @if (showUpdateForm()) {
+        <app-add-event-form
+          [selectedDate]="selectedDate"
+          [eventToEdit]="selectedEvent"
+          (cancel)="onBackToDetails()"
+          (eventUpdated)="onUpdateComplete($event)">
+        </app-add-event-form>
+      } @else if (showEventDetails()) {
+        <app-event-details
+          [event]="selectedEvent"
+          (back)="onBackToEvents()"
+          (delete)="onDeleteFromDetails()"
+          (update)="onUpdateFromDetails()">
+        </app-event-details>
+      } @else if (showAddEvent()) {
+        <app-add-event-form
+          [selectedDate]="selectedDate"
+          (cancel)="onBackToEvents()"
+          (eventCreated)="onEventCreated($event)">
+        </app-add-event-form>
+      } @else {
+        <app-event-list
+          [events]="events"
+          (addEvent)="onAddEventClick()"
+          (eventSelected)="onEventSelected($event)">
+        </app-event-list>
+      }
+    </div>
+  </div>
+}
+
+
